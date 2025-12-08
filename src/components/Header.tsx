@@ -1,3 +1,5 @@
+'use client'
+
 import {
   SignedIn,
   SignedOut,
@@ -11,11 +13,13 @@ import Link from 'next/link'
 export default function Header() {
   return (
     <div>
-      <nav className="bg-red-900" py-4 px-8>
+      <nav className="bg-gray-700 py-4 px-8">
         <div className="flex items-center justify-between container">
-          <div className="flex item-center font-bold">
+          <div className="flex items-center font-bold">
             <Link href="/">
-              <div className="text-lg text-white">Clerk App</div>
+              <div className="flex items-center space-x-2">
+                <div className="text-lg text-white">seoyeon portfolio</div>
+              </div>
             </Link>
           </div>
           <div className="flex items-center font-bold">
@@ -27,17 +31,34 @@ export default function Header() {
                 <SignUpButton />
               </div>
             </SignedOut>
+
             <SignedIn>
               <Link
-                href="/dashboard"
+                href="/project"
                 className="text-gray-300 hover:text-white mr-4"
               >
-                Dashboard-C
+                Project
               </Link>
-              <div className="text-gray-300 hover:text;white mr-4">
-                <UserButton />
-              </div>
-              <div className="text-gray-300 hover:text-white mr-4">
+              <Link
+                href="/team"
+                className="text-gray-300 hover:text-white mr-4"
+              >
+                Team
+              </Link>
+              <Link
+                href="/contact"
+                className="text-gray-300 hover:text-white mr-4"
+              >
+                Contact
+              </Link>
+              <UserButton
+                appearance={{
+                  elements: {
+                    avatarBox: 'ring-2 ring-white mr-4',
+                  },
+                }}
+              />
+              <div className="text-gray-300 hover:text-white">
                 <SignOutButton />
               </div>
             </SignedIn>

@@ -1,22 +1,15 @@
+import { ClerkProvider } from '@clerk/nextjs'
 import type { Metadata } from 'next'
-import {
-  ClerkProvider,
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  SignUpButton,
-  UserButton,
-} from '@clerk/nextjs'
-
 import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
-import Link from 'next/link'
-import Header from '@/components/Header'
+import Header from '@/components/Header' // Header 컴포넌트 import // ClerkProvider import
 
+// 참고: Geist 폰트 정의가 누락되어 있어 안전하게 추가합니다.
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
 })
+
 const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   subsets: ['latin'],
@@ -33,48 +26,15 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
+    // 1. ClerkProvider를 최상위 컴포넌트로 사용하여 모든 페이지를 감쌉니다.
     <ClerkProvider>
       <html lang="en">
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-          {/* 헤더 */}
-          <header className="flex justify-between items-center p-4 gap-4 h-16 border-b">
-            {/* 왼쪽 로고 */}
-            <div className="flex items-center font-bold">
-              <Link href="/">
-                <div className="text-lg text-black">Clerk Auth</div>
-              </Link>
-            </div>
-
-            {/* 오른쪽 메뉴 */}
-            <div className="flex gap-4 items-center">
-              <SignedOut>
-                <SignInButton />
-                <SignUpButton>
-                  <button className="bg-[#6c47ff] text-white rounded-full font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 cursor-pointer">
-                    Sign Up
-                  </button>
-                </SignUpButton>
-              </SignedOut>
-
-              <SignedIn>
-                {/* 대시보드 링크 */}
-                <Link href="/dashboard" className="hover:underline">
-                  Dashboard
-                </Link>
-                <Link href="/dashboard-c" className="hover:underline">
-                  Dashboard-C
-                </Link>
-
-                {/* 프로필/로그아웃 */}
-                <UserButton />
-              </SignedIn>
-            </div>
-          </header>
-
-          {/* 메인 콘텐츠 */}
-          <main>{children}</main>
+          {/* 2. Header 컴포넌트를 children (페이지 내용) 위에 배치합니다. */}
+          <Header />
+          {children}
         </body>
       </html>
     </ClerkProvider>

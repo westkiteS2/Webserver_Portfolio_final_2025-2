@@ -9,14 +9,13 @@ export default function ContactPage() {
         gridTemplateColumns: '1fr 1.2fr',
         gap: '30px',
         alignItems: 'center',
-        backgroundColor: '#ffffff',
         padding: '30px',
         maxWidth: '700px',
         margin: '70px auto',
       }}
     >
       <Image
-        src="/profile.png"
+        src="/images/westkite.jpg"
         alt="Profile"
         width={300}
         height={300}
@@ -39,7 +38,7 @@ export default function ContactPage() {
             <a
               href="https://github.com/westkiteS2"
               target="_blank"
-              className="hover: underline hover:text-gray-500"
+              className="text-[#1A472A] hover:underline hover:text-[#E0E0E0]"
             >
               github.com/westkiteS2
             </a>
@@ -49,7 +48,7 @@ export default function ContactPage() {
             <a
               href="https://www.instagram.com/hievm/"
               target="_blank"
-              className="hover: underline hover:text-gray-500"
+              className="text-[#1A472A] hover:underline hover:text-[#E0E0E0]"
             >
               @hievm
             </a>

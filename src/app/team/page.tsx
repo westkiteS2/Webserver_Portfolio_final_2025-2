@@ -15,7 +15,7 @@ const teamMembers: TeamMember[] = [
     id: 1,
     name: '김가연',
     studentId: '92410665',
-    imageSrc: '/images/bora120.jpg',
+    imageSrc: '/images/bora.jpg',
     portfolioLink: 'https://portfoilo2-2.vercel.app/',
     githubLink: 'https://github.com/bora120',
   },
@@ -31,7 +31,7 @@ const teamMembers: TeamMember[] = [
     id: 3,
     name: '천서연',
     studentId: '92410940',
-    imageSrc: '/images/westkiteS2.jpg',
+    imageSrc: '/images/westkite.jpg',
     portfolioLink: 'https://webserver-portfolio-final-2025-2.vercel.app/',
     githubLink: 'https://github.com/westkiteS2',
   },
@@ -39,7 +39,7 @@ const teamMembers: TeamMember[] = [
     id: 4,
     name: '최수민',
     studentId: '92410952',
-    imageSrc: '/images/sumin8838.png',
+    imageSrc: '/images/sumin.png',
     portfolioLink: 'https://my-portfolio-five-psi-32.vercel.app/',
     githubLink: 'https://github.com/sumin8838',
   },
@@ -47,40 +47,47 @@ const teamMembers: TeamMember[] = [
 
 const MemberCard: React.FC<{ member: TeamMember }> = ({ member }) => {
   return (
-    // 배경색을 짙은 회색으로 변경 (#242424), 슬리데린 그린 테두리 적용 (#1A472A)
-    <div className="bg-[#242424] p-4 rounded-lg shadow-xl text-center transition duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-1 border-2 border-[#1A472A]">
-      <img
-        src={member.imageSrc}
-        alt={`${member.name} 프로필`}
-        className="w-24 h-24 rounded-full object-cover mx-auto mb-4"
-      />
+    <div className="bg-[#242424] p-6 rounded-lg shadow-xl transition duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-1 border-2 border-[#1A472A] text-left">
+      {/* sm 이상에서 이미지와 텍스트를 가로로 배치 (flex) */}
+      <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4">
+        {/* 프로필 이미지 (왼쪽) */}
+        <img
+          src={member.imageSrc}
+          alt={`${member.name} 프로필`}
+          className="w-24 h-24 rounded-full object-cover flex-shrink-0"
+        />
 
-      {/* 이름 텍스트 색상을 은색 계열로 변경 (#E0E0E0) */}
-      <h3 className="text-xl font-bold text-[#E0E0E0] mb-1">{member.name}</h3>
+        {/* 텍스트 및 링크 (오른쪽) */}
+        <div className="flex flex-col text-center sm:text-left justify-center h-24">
+          {/* 이름 */}
+          <h3 className="text-2xl font-bold text-[#E0E0E0] mb-0">
+            {member.name}
+          </h3>
 
-      {/* 학번 텍스트 색상을 대비를 위해 밝은 회색으로 변경 */}
-      <p className="text-sm text-gray-400 mb-3">{member.studentId}</p>
+          {/* 학번 */}
+          <p className="text-base text-gray-400 mb-2">{member.studentId}</p>
 
-      <div className="flex justify-center space-x-4 mt-3">
-        <a
-          href={member.githubLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          // 아이콘 색상을 슬리데린 그린으로 변경 (#1A472A), 호버 시 은색 계열 (#E0E0E0)
-          className="text-[#1A472A] hover:text-[#E0E0E0] transition"
-        >
-          <AiFillGithub size={24} />
-        </a>
+          {/* 링크 아이콘들 */}
+          <div className="flex justify-center sm:justify-start space-x-4 mt-3">
+            <a
+              href={member.githubLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#1A472A] hover:text-[#E0E0E0] transition"
+            >
+              <AiFillGithub size={24} />
+            </a>
 
-        <a
-          href={member.portfolioLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          // 아이콘 색상을 슬리데린 그린으로 변경 (#1A472A), 호버 시 은색 계열 (#E0E0E0)
-          className="text-[#1A472A] hover:text-[#E0E0E0] transition"
-        >
-          <AiOutlineLink size={24} />
-        </a>
+            <a
+              href={member.portfolioLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#1A472A] hover:text-[#E0E0E0] transition"
+            >
+              <AiOutlineLink size={24} />
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   )
@@ -88,23 +95,22 @@ const MemberCard: React.FC<{ member: TeamMember }> = ({ member }) => {
 
 export default function TeamIntroPage() {
   return (
-    // 배경색을 전역 CSS 변수 (슬리데린 다크 테마)로 변경
     <div className="bg-[var(--background)] py-10 px-10 mt-15">
       <div className="max-w-8xl mx-auto text-center">
-        {/* 헤더 텍스트 색상을 전역 CSS 변수 (은색 계열)로 변경 */}
         <h1 className="text-3xl font-extrabold text-[var(--foreground)] mb-2">
           Our Team
         </h1>
         <p className="text-gray-400 mb-1">: 공주들</p>
         {/* 링크 색상을 슬리데린 그린으로 변경 (#1A472A) */}
         <a
-          href="#"
+          href="https://2025webserver-team.vercel.app/"
           className="text-[#1A472A] hover:text-[#AAAAAA] hover:underline mb-3 inline-block"
         >
           Team_Project
         </a>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
+        {/* 📌 레이아웃 수정: 4개의 카드를 2열로 배치하여 넓게 보이도록 함 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 mt-10 max-w-4xl mx-auto">
           {teamMembers.map((member) => (
             <MemberCard key={member.id} member={member} />
           ))}

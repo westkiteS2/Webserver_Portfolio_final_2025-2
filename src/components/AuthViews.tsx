@@ -1,4 +1,3 @@
-// components/AuthViews.tsx
 'use client'
 
 import React, { useState, useEffect } from 'react'
@@ -38,9 +37,10 @@ const TypingAnimation: React.FC<TypingProps> = ({
   }, [displayedText, targetText, onTypingComplete])
 
   return (
+    // 텍스트 색상을 전역 변수 --foreground (은색)로 변경
     <h1
       className={`
-        text-3xl sm:text-5xl font-extrabold text-gray-900 mb-8
+        text-3xl sm:text-5xl font-extrabold text-[var(--foreground)] mb-8
         whitespace-nowrap overflow-hidden
         border-r-4
         ${
@@ -58,7 +58,7 @@ const TypingAnimation: React.FC<TypingProps> = ({
 // === B. SignedOut 상태에서 보여줄 콘텐츠 ===
 const SignedOutView: React.FC = () => {
   const [showContent, setShowContent] = useState(false)
-  const targetText = "myyonop's Portfolio"
+  const targetText = 'Slytherin Portfolio' // 슬리데린 테마에 맞춰 텍스트 변경 (선택 사항)
 
   const handleTypingComplete = () => {
     setTimeout(() => setShowContent(true), 500)
@@ -82,22 +82,25 @@ const SignedOutView: React.FC = () => {
           }
         `}
       >
-        <p className="text-xl text-gray-700 mb-10">
+        {/* 텍스트 색상을 전역 변수 --foreground (은색)로 변경 */}
+        <p className="text-xl text-[var(--foreground)] mb-10">
           더 많은 정보를 보려면 **로그인을 해주세요.**
         </p>
 
         <div className="space-x-4">
-          {/* Clerk의 <SignInButton /> 또는 커스텀 로그인 버튼 사용 */}
-          <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg transition duration-300">
+          {/* 로그인 버튼: 슬리데린 그린 바탕, 은색 텍스트 */}
+          <button className="bg-[#1A472A] hover:bg-green-700 text-[#E0E0E0] font-bold py-3 px-8 rounded-lg shadow-lg transition duration-300 border-2 border-[#E0E0E0]">
             <SignInButton />
           </button>
-          <button className="bg-white border border-gray-300 hover:bg-gray-100 text-gray-800 font-bold py-3 px-8 rounded-lg transition duration-300">
+          {/* 회원가입 버튼: 은색 테두리, 배경 투명, 텍스트 은색 */}
+          <button className="bg-transparent border-2 border-[#E0E0E0] hover:bg-[#1A472A]/20 text-[#E0E0E0] font-bold py-3 px-8 rounded-lg transition duration-300">
             <SignUpButton />
           </button>
         </div>
 
         <div className="mt-16">
-          <p className="text-sm text-gray-500 mb-4">
+          {/* 텍스트 색상을 전역 변수 --foreground (은색)로 변경 */}
+          <p className="text-sm text-[var(--foreground)] mb-4">
             🔒 로그인 후 전체 프로젝트를 열람하세요.
           </p>
         </div>
@@ -109,7 +112,7 @@ const SignedOutView: React.FC = () => {
 // === C. SignedIn 상태에서 보여줄 콘텐츠 ===
 const SignedInView: React.FC = () => {
   const [showContent, setShowContent] = useState(false)
-  const targetText = "Welcome, myyonop's Portfolio"
+  const targetText = 'Welcome, Slytherin Success' // 슬리데린 테마에 맞춰 텍스트 변경 (선택 사항)
 
   const handleTypingComplete = () => {
     setTimeout(() => setShowContent(true), 500)
@@ -133,12 +136,14 @@ const SignedInView: React.FC = () => {
           }
         `}
       >
-        <p className="text-xl text-gray-700 mb-10">
+        {/* 텍스트 색상을 전역 변수 --foreground (은색)로 변경 */}
+        <p className="text-xl text-[var(--foreground)] mb-10">
           환영합니다! myyonop님의 모든 프로젝트를 둘러보세요.
         </p>
 
         <div className="space-x-4">
-          <button className="bg-blue-600 border border-gray-300 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300">
+          {/* 로그아웃 버튼: 슬리데린 그린 바탕, 은색 텍스트 */}
+          <button className="bg-[#1A472A] border-2 border-[#E0E0E0] hover:bg-green-700 text-[#E0E0E0] font-bold py-3 px-8 rounded-lg transition duration-300">
             <SignOutButton />
           </button>
         </div>

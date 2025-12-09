@@ -65,7 +65,7 @@ export default async function ProjectsPage() {
 
   return (
     <section className="px-6 max-w-7xl mx-auto">
-      <h1 className="text-4xl font-bold mt-15 mb-4">Project</h1>
+      <h1 className="text-4xl font-bold mt-15 mb-4">My Project</h1>
       <p className="text-xl mb-4">
         {GITHUB_USERNAME} 님의 GitHub 공개 저장소 목록 ({repos.length}개)
       </p>

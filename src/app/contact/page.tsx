@@ -46,11 +46,11 @@ export default function ContactPage() {
           <li>
             Instagram:{' '}
             <a
-              href="https://www.instagram.com/hievm/"
+              href="https://www.instagram.com/sy.hievm/"
               target="_blank"
               className="text-[#1A472A] hover:underline hover:text-[#E0E0E0]"
             >
-              @hievm
+              @sy.hievm
             </a>
           </li>
           <li>전화번호: 010.8513.3642</li>

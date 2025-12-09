@@ -98,10 +98,8 @@ export default function TeamIntroPage() {
     <div className="bg-[var(--background)] py-10 px-10 mt-15">
       <div className="max-w-8xl mx-auto text-center">
         <h1 className="text-3xl font-extrabold text-[var(--foreground)] mb-2">
-          Our Team
+          공주들
         </h1>
-        <p className="text-gray-400 mb-1">: 공주들</p>
-        {/* 링크 색상을 슬리데린 그린으로 변경 (#1A472A) */}
         <a
           href="https://2025webserver-team.vercel.app/"
           className="text-[#1A472A] hover:text-[#AAAAAA] hover:underline mb-3 inline-block"

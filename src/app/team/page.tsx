@@ -47,20 +47,27 @@ const teamMembers: TeamMember[] = [
 
 const MemberCard: React.FC<{ member: TeamMember }> = ({ member }) => {
   return (
-    <div className="bg-[#242424] p-6 rounded-lg shadow-xl transition duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-1 border-2 border-[#1A472A] text-left">
+    // 📌 수정 1: 배경색을 더 짙게, 호버 시 그림자 및 크기 변화 효과 강화
+    <div
+      className="bg-[#1e1e1e] p-6 rounded-xl shadow-lg
+                       transition duration-500 ease-in-out
+                       hover:shadow-green-900/50 hover:shadow-2xl hover:scale-[1.02]
+                       border border-[#1A472A] text-left"
+    >
       {/* sm 이상에서 이미지와 텍스트를 가로로 배치 (flex) */}
-      <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4">
+      <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5">
         {/* 프로필 이미지 (왼쪽) */}
         <img
           src={member.imageSrc}
           alt={`${member.name} 프로필`}
-          className="w-24 h-24 rounded-full object-cover flex-shrink-0"
+          // 📌 수정 2: 이미지 크기 확대 (w-28 h-28) 및 은색 테두리 추가
+          className="w-28 h-28 rounded-full object-cover flex-shrink-0 ring-4 ring-[#E0E0E0] p-1"
         />
 
         {/* 텍스트 및 링크 (오른쪽) */}
-        <div className="flex flex-col text-center sm:text-left justify-center h-24">
+        <div className="flex flex-col text-center sm:text-left justify-center h-28">
           {/* 이름 */}
-          <h3 className="text-2xl font-bold text-[#E0E0E0] mb-0">
+          <h3 className="text-3xl font-bold text-[#E0E0E0] mb-0">
             {member.name}
           </h3>
 
@@ -75,7 +82,8 @@ const MemberCard: React.FC<{ member: TeamMember }> = ({ member }) => {
               rel="noopener noreferrer"
               className="text-[#1A472A] hover:text-[#E0E0E0] transition"
             >
-              <AiFillGithub size={24} />
+              {/* 📌 수정 3: 아이콘 크기 확대 */}
+              <AiFillGithub size={28} />
             </a>
 
             <a
@@ -84,7 +92,8 @@ const MemberCard: React.FC<{ member: TeamMember }> = ({ member }) => {
               rel="noopener noreferrer"
               className="text-[#1A472A] hover:text-[#E0E0E0] transition"
             >
-              <AiOutlineLink size={24} />
+              {/* 📌 수정 3: 아이콘 크기 확대 */}
+              <AiOutlineLink size={28} />
             </a>
           </div>
         </div>
@@ -97,17 +106,20 @@ export default function TeamIntroPage() {
   return (
     <div className="bg-[var(--background)] py-10 px-10 mt-15">
       <div className="max-w-8xl mx-auto text-center">
-        <h1 className="text-3xl font-extrabold text-[var(--foreground)] mb-2">
-          공주들
+        {/* 📌 수정 4: 타이틀 문구 및 구조 변경 */}
+        <h1 className="text-4xl font-extrabold text-[var(--foreground)] mb-2 tracking-wider">
+          2025 Webserver Team
         </h1>
+
+        {/* 팀 프로젝트 링크 */}
         <a
           href="https://2025webserver-team.vercel.app/"
-          className="text-[#1A472A] hover:text-[#AAAAAA] hover:underline mb-3 inline-block"
+          className="text-[#1A472A] hover:text-[#AAAAAA] hover:underline mb-3 inline-block font-medium"
         >
-          Team Project
+          Team Project Link →
         </a>
 
-        {/* 📌 레이아웃 수정: 4개의 카드를 2열로 배치하여 넓게 보이도록 함 */}
+        {/* 레이아웃 유지: 4개의 카드를 2열로 배치 */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 mt-10 max-w-4xl mx-auto">
           {teamMembers.map((member) => (
             <MemberCard key={member.id} member={member} />

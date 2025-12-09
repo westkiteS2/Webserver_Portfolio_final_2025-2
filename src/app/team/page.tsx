@@ -104,7 +104,7 @@ export default function TeamIntroPage() {
           href="https://2025webserver-team.vercel.app/"
           className="text-[#1A472A] hover:text-[#AAAAAA] hover:underline mb-3 inline-block"
         >
-          Team_Project
+          Team Project
         </a>
 
         {/* 📌 레이아웃 수정: 4개의 카드를 2열로 배치하여 넓게 보이도록 함 */}
